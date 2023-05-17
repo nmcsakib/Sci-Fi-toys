@@ -10,15 +10,15 @@ const Navbar = () => {
         }).catch(err => console.log(err))
     }
     const navItems = <>
-        <li><NavLink className={({ isActive }) => isActive ? "text-blue-500" : "text-white"} to='/'>Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? "text-blue-500" : "text-white"} to='/blog'>All toys</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/'>Home</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/blog'>All toys</NavLink></li>
         {
             user && <>
-            <li><NavLink className={({ isActive }) => isActive ? "text-blue-500" : "text-white"} to='/blog'>My toys</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? "text-blue-500" : "text-white"} to='/blog'>Add a toy</NavLink></li>
+            <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/blog'>My toys</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/blog'>Add a toy</NavLink></li>
             </>
         }
-        <li><NavLink className={({ isActive }) => isActive ? "text-blue-500" : "text-white"} to='/blog'>Blog</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/blog'>Blog</NavLink></li>
         
     </>
     return (
@@ -46,11 +46,13 @@ const Navbar = () => {
                                     <button onClick={handelLogOut} className="btn btn-warning">Logout</button>
                                 </>
                                 :
-                                <NavLink to="/login" className={({ isActive }) => isActive ? "text-blue-500 btn btn-warning" : "text-gray-900 btn btn-warning"} >Login</NavLink>}
+                                <NavLink to="/login" className={({ isActive }) => isActive ? "text-yellow-500 btn btn-warning" : "text-gray-900 btn btn-warning"} >Login</NavLink>}
 
                     </ul>
                 </div>
-                <Link to="/" className="btn border-none rounded-full text-xl font-extrabold tracking-wide bg-gradient-to-br from-yellow-400/60 to-pink-600/60">Sci-fi-toy</Link>
+                <Link to="/" className=" flex justify-between items-center border-none gap-3 px-2 text-xl font-extrabold tracking-wide ">
+                    <img className='w-20 h-20'  src="src\assets\logo.png" alt="" />
+                    Sci-fi-toy</Link>
             </div>
 
             {/* For small devices */}
@@ -73,7 +75,7 @@ const Navbar = () => {
                             <button onClick={handelLogOut} className="btn btn-warning">Logout</button>
                         </>
                         :
-                        <NavLink to="/login" className={({ isActive }) => isActive ? "text-blue-500 btn btn-warning" : "text-gray-900 btn btn-warning"} >Login</NavLink>}
+                        <NavLink to="/login" className={({ isActive }) => isActive ? "text-yellow-500 btn btn-warning" : "text-gray-900 btn btn-warning"} >Login</NavLink>}
             </div>
 
             {/* For small devices */}
