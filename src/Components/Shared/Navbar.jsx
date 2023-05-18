@@ -11,7 +11,7 @@ const Navbar = () => {
     }
     const navItems = <>
         <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/'>Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/blog'>All toys</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/all-toys'>All toys</NavLink></li>
         {
             user && <>
             <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/blog'>My toys</NavLink></li>

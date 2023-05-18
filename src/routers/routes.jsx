@@ -3,6 +3,7 @@ import Home from "../Components/Layout/HomePage/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Main from "../Components/Layout/Main";
+import AllToys from "../Pages/AllToys/AllToys";
 
 
  const router = createBrowserRouter([
@@ -13,6 +14,11 @@ import Main from "../Components/Layout/Main";
             {
                 path: '/',
                 element: <Home/>
+            },
+            {
+                path: 'all-toys',
+                element: <AllToys/>,
+                loader: ()=> fetch('http://localhost:5000/allToys')
             },
             {
                 path: 'login',
