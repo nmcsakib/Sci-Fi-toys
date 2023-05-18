@@ -31,9 +31,9 @@ const Banner = () => {
         
         
       </Swiper>
-      <div className="w-full bg-black/40 z-10 h-screen absolute top-0 left-0 flex flex-col gap-5 items-center justify-center">
-        <h2 className="text-7xl font-bold text-center bg-gradient-to-r from-yellow-500 to-pink-500 text-transparent bg-clip-text">Welcome to <br/> the biggest Toy Store </h2>
-        <p className="text-center text-gray-900 font-bold  w-5/6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus perferendis error iusto ullam numquam minima et, quidem illum cum fugit reiciendis cumque aliquid eveniet necessitatibus! Neque unde nemo repellat veritatis rerum minima quasi amet deleniti impedit blanditiis, eaque ipsa facere molestiae fuga vero quas? Aliquam hic nam tempore cupiditate quisquam.</p>
+      <div className="w-full bg-black/30 z-10 h-screen absolute top-0 left-0 flex flex-col gap-5 items-center justify-center">
+        <h2 className="text-7xl font-bold text-center bg-gradient-to-r from-yellow-500 to-pink-500 text-transparent bg-clip-text py-5">Welcome to <br/> the biggest Toy Store </h2>
+        <p className="text-center text-[#fbfbfb] font-thin  w-5/6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus perferendis error iusto ullam numquam minima et, quidem illum cum fugit reiciendis cumque aliquid eveniet necessitatibus! Neque unde nemo repellat veritatis rerum minima quasi amet deleniti impedit blanditiis, eaque ipsa facere molestiae fuga vero quas? Aliquam hic nam tempore cupiditate quisquam.</p>
         <button className="btn btn-warning">Know More</button>
       </div>
         </div>
