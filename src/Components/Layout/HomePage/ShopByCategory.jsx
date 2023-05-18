@@ -28,7 +28,7 @@ const ShopByCategory = () => {
       <Tab onClick={() => handleTabClick('chemistry-toys')}>Chemistry Toys</Tab>
       <Tab onClick={() => handleTabClick('biology-toys')}>Biology Toys</Tab>
     </TabList>
-<div className='px-10'>
+<div className='p-10'>
     
 <TabPanel>
     <div   className='grid grid-cols-2 gap-5'>
