@@ -15,10 +15,11 @@ const AllToys = () => {
       <tr>
         <th></th>
         <th>Seller</th>
-        <th>Toy Name</th>
+        <th className='px-0'>Toy Name</th>
         <th>Sub Category</th>
         <th>Price</th>
         <th>Available</th>
+        <th>View Details</th>
       </tr>
     </thead>
     <tbody>

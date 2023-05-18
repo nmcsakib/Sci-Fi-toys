@@ -51,7 +51,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link to="/" className=" flex justify-between items-center border-none gap-3 px-2 text-xl font-extrabold tracking-wide ">
-                    <img className='w-20 h-20'  src="src\assets\logo.png" alt="" />
+                    <img className='w-20 h-20'  src="https://i.ibb.co/27rgTMn/Logo.png" alt="" />
                     Sci-fi-toy</Link>
             </div>
 
