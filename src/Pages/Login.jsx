@@ -1,16 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state?.from.pathname;
     const {logIn} = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         const {email, password} = data;
         logIn(email, password)
-        .then(res=> console.log(res.user))
-        .catch(err => console.log(err))
+        .then(res=> {
+            toast('login successful')
+            navigate(from || "/")
+        })
+        .catch(err => {
+            console.log(err);
+            toast(err.message)
+        })
     }
     return (
         <div className="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
@@ -53,17 +63,17 @@ const Login = () => {
                         </div>
                     </div>
                    </form>
-                    <div class="flex justify-between items-center mt-3">
+                    <div className="flex justify-between items-center mt-3">
             
-            <hr class="w-full"/>
-            <span class="p-2 text-gray-400 mb-1">OR</span>
-            <hr class="w-full"/>
+            <hr className="w-full"/>
+            <span className="p-2 text-gray-400 mb-1">OR</span>
+            <hr className="w-full"/>
 
           </div>
 
 
-          <button class="uppercase h-12 mt-3 text-white w-full rounded bg-gray-800 hover:bg-gray-900"><i class="fa fa-facebook mr-2"></i>Github</button>
-          <button class="uppercase h-12 mt-3 text-white w-full rounded bg-red-800 hover:bg-red-900"><i class="fa fa-google mr-2"></i>Google</button>
+          <button className="uppercase h-12 mt-3 text-white w-full rounded bg-gray-800 hover:bg-gray-900"><i className="fa fa-facebook mr-2"></i>Github</button>
+          <button className="uppercase h-12 mt-3 text-white w-full rounded bg-red-800 hover:bg-red-900"><i className="fa fa-google mr-2"></i>Google</button>
 
          
        </div>

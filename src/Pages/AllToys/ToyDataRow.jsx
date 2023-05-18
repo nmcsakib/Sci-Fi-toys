@@ -1,4 +1,5 @@
-import React from 'react';
+
+import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const ToyDataRow = ({toys, rowNum}) => {
@@ -21,7 +22,7 @@ const ToyDataRow = ({toys, rowNum}) => {
         <td>{price}</td>
         <td>{availableQuantity}</td>
         <td>
-            <Link to={`/toy/${_id}`}  htmlFor="my-modal-3"  className="btn btn-primary">Details</Link></td>
+            <Link to={`/toy/${_id}`}  htmlFor="my-modal-3"  className="btn btn-primary flex">Details<FaArrowRight/></Link></td>
           
       </tr> 
        

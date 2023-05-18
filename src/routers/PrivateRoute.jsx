@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { BallTriangle } from "react-loader-spinner";
@@ -6,6 +6,7 @@ import { BallTriangle } from "react-loader-spinner";
 
 const PrivateRoute = ({children}) => {
     const {user, loading} = useContext(AuthContext)
+    const location = useLocation()
     if(loading){
         return <div className="w-full h-full flex justify-center items-center">
             <BallTriangle
@@ -14,14 +15,14 @@ const PrivateRoute = ({children}) => {
         radius={5}
         color="#4fa94d"
         ariaLabel="ball-triangle-loading"
-        wrapperClass={{}}
+        wrapperclassName={{}}
         wrapperStyle=""
         visible={true}
       />
         </div>
     }
     else if(!user){
-        return <Navigate to='/login'></Navigate>
+        return <Navigate to='/login' state={{from: location}} replace></Navigate>
     } 
     
     return children;

@@ -12,17 +12,17 @@ const Navbar = () => {
     const navItems = <>
         <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/'>Home</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/all-toys'>All toys</NavLink></li>
-        {
-            user && <>
-            <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/blog'>My toys</NavLink></li>
+        
+           <>
+            <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/my-toys'>My toys</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/add-a-toy'>Add a toy</NavLink></li>
             </>
-        }
+      
         <li><NavLink className={({ isActive }) => isActive ? "text-yellow-500" : "text-white"} to='/blog'>Blog</NavLink></li>
         
     </>
     return (
-        <nav className="navbar py-0 fixed backdrop-blur-md top-0 z-20 bg-pink-600/20">
+        <nav className="navbar py-0 fixed backdrop-blur-md top-0 left-0 z-20 bg-pink-600/20">
             <div className="navbar-start justify-between md:justify-start flex-row-reverse md:flex-row w-full">
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -46,7 +46,7 @@ const Navbar = () => {
                                     <button onClick={handelLogOut} className="btn btn-warning">Logout</button>
                                 </>
                                 :
-                                <NavLink to="/login" className={({ isActive }) => isActive ? "text-yellow-500 btn btn-warning" : "text-gray-900 btn btn-warning"} >Login</NavLink>}
+                                <NavLink to="/login" className={({ isActive }) => isActive ? "text-yellow-500 btn btn-info" : "text-gray-900 btn btn-warning"} >Login</NavLink>}
 
                     </ul>
                 </div>
@@ -75,7 +75,7 @@ const Navbar = () => {
                             <button onClick={handelLogOut} className="btn btn-warning">Logout</button>
                         </>
                         :
-                        <NavLink to="/login" className={({ isActive }) => isActive ? "text-yellow-500 btn btn-warning" : "text-gray-900 btn btn-warning"} >Login</NavLink>}
+                        <NavLink to="/login" className={({ isActive }) => isActive ? "text-sky-500 btn btn-warning" : "text-gray-900 btn btn-warning"} >Login</NavLink>}
             </div>
 
             {/* For large devices */}
