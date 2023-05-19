@@ -6,7 +6,7 @@ import { useContext } from "react";
 const AddToy = () => {
     
   const {user} = useContext(AuthContext)
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
    
@@ -19,11 +19,14 @@ const AddToy = () => {
     }).then(res => res.json()).then(data => {
       console.log(data);
       if(data.insertedId){
-        toast('Toy added Successfully')
+       reset()
+          toast('Toy added Successfully')
       }
     })
     console.log(data);
+    
   };
+  
     return (
         <>
 <div className="flex items-center justify-center p-12">

@@ -10,11 +10,12 @@ const Main = () => {
     return (
         <div className='max-w-7xl mx-auto'>
             <Navbar/>
-           <div className="min-h-[calc(100vh-100px)] mt-20 px-10 ">
+           <div className="min-h-[calc(100vh-100px)] mt-20 px-10 bg-yellow-100">
            <Outlet/>
+ 
            </div>
             <Footer/>
-            <ToastContainer/>
+            <ToastContainer position="top-center"/>
         </div>
     );
 };
