@@ -19,7 +19,7 @@ const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate 
             <td>{sellerName}</td>
             <td className='px-0'>{toyName}</td>
             <td>{subCategory}</td>
-            <td>{price}</td>
+            <td>${price}</td>
             <td>{availableQuantity}</td>
             <td>
                 {

@@ -41,7 +41,7 @@ const ToyDetails = () => {
   
   <div className="stat">
     <div className="stat-title">Price</div>
-    <div className="stat-value">{price}</div>
+    <div className="stat-value">${price}</div>
     <div className="stat-desc">Available: {availableQuantity}</div>
   </div>
   

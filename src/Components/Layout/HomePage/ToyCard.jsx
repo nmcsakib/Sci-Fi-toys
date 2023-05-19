@@ -15,7 +15,7 @@ const ToyCard = ({toy}) => {
   <div className="card-body">
     <h2 className="card-title">{toy.toyName}</h2>
     <div className='flex justify-between w-full'>
-        <p>{toy.price}</p>
+        <p>${toy.price}</p>
        <div> <Rating style={{ maxWidth: 120 }} readOnly value={parseFloat(toy.rating)} /></div>
     </div>
     <div className="card-actions justify-end">
