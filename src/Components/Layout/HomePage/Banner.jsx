@@ -27,7 +27,9 @@ const Banner = () => {
       >
         <SwiperSlide><img className="w-full" src="https://media.istockphoto.com/id/1288847154/photo/dreams-of-flight-indian-child-playing-with-toy-airplane.jpg?s=612x612&w=0&k=20&c=f_zAa_3E37R-mLE7eWlKNjtoFQyZtZ7z_YpETLYOkMQ=" alt="" /></SwiperSlide>
         <SwiperSlide><img className="w-full" src="https://myhappyhelpers.com.au/cdn/shop/articles/54aaed237d9016028bd3fd8a04f35615.jpg?v=1643858740" alt="" /></SwiperSlide>
+        
         <SwiperSlide><img className="w-full" src="https://www.startearly.org/app/uploads/2021/03/HERO_Colorful-Learning-Game-1024x640.png" alt="" /></SwiperSlide>
+        
         
         
       </Swiper>

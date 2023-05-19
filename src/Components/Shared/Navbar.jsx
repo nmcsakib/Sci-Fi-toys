@@ -43,7 +43,7 @@ const Navbar = () => {
                                             </div>
                                         </label>
                                     </div>
-                                    <button onClick={handelLogOut} className="btn btn-warning">Logout</button>
+                                    <button onClick={handelLogOut} className="btn btn-warning">Log out</button>
                                 </>
                                 :
                                 <NavLink to="/login" className={({ isActive }) => isActive ? "text-yellow-500 btn btn-info" : "text-gray-900 btn btn-warning"} >Login</NavLink>}
@@ -72,7 +72,7 @@ const Navbar = () => {
                                     </div>
                                 </label>
                             </div>
-                            <button onClick={handelLogOut} className="btn btn-warning">Logout</button>
+                            <button onClick={handelLogOut} className="btn btn-warning">Log out</button>
                         </>
                         :
                         <NavLink to="/login" className={({ isActive }) => isActive ? "text-sky-500 btn btn-warning" : "text-gray-900 btn btn-warning"} >Login</NavLink>}

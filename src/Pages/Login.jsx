@@ -8,7 +8,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location?.state?.from.pathname;
-    const {logIn} = useContext(AuthContext)
+    const {logIn, googleSignIn, githubSignIn} = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         const {email, password} = data;
@@ -22,6 +22,16 @@ const Login = () => {
             toast(err.message)
         })
     }
+    const handelGoogleSignIn = () => {
+            googleSignIn().then((res) => {
+                navigate(from || '/')
+            }).catch(err => toast(err?.message))
+        }
+    const handelGithubSignIn = () => {
+            githubSignIn().then((res) => {console.log(res.user);}).catch(err => toast(err?.message))
+        }
+    
+    
     return (
         <div className="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
     <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden">
@@ -72,8 +82,8 @@ const Login = () => {
           </div>
 
 
-          <button className="uppercase h-12 mt-3 text-white w-full rounded bg-gray-800 hover:bg-gray-900"><i className="fa fa-facebook mr-2"></i>Github</button>
-          <button className="uppercase h-12 mt-3 text-white w-full rounded bg-red-800 hover:bg-red-900"><i className="fa fa-google mr-2"></i>Google</button>
+          <button onClick={handelGithubSignIn} className="uppercase h-12 mt-3 text-white w-full rounded bg-gray-800 hover:bg-gray-900"><i className="fa fa-facebook mr-2"></i>Github</button>
+          <button onClick={handelGoogleSignIn} className="uppercase h-12 mt-3 text-white w-full rounded bg-red-800 hover:bg-red-900"><i className="fa fa-google mr-2"></i>Google</button>
 
          
        </div>
