@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Rating } from '@smastrom/react-rating';
-
+import { toast } from "react-toastify";
 import '@smastrom/react-rating/style.css'
 
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Provider/AuthProvider';
 
 const ToyCard = ({toy}) => {
-    console.log(toy);
+  const {user} = useContext(AuthContext)
     return (
         <div className="card bg-yellow-100 shadow-xl">
   <figure><img src={toy.pictureURL} className='h-52 w-full'  alt="Shoes" /></figure>
@@ -18,7 +19,7 @@ const ToyCard = ({toy}) => {
        <div> <Rating style={{ maxWidth: 120 }} readOnly value={parseFloat(toy.rating)} /></div>
     </div>
     <div className="card-actions justify-end">
-      <Link to={`/toy/${toy._id}`} className="btn btn-primary">Details <FaArrowAltCircleRight/></Link>
+      <Link onClick={() => {!user && toast('You have to log in first to view details')}} to={`/toy/${toy._id}`} className="btn btn-primary">Details <FaArrowAltCircleRight/></Link>
     </div>
   </div>
 </div>

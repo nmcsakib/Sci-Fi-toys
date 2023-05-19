@@ -7,6 +7,7 @@ const ShopByCategory = () => {
 
     const [activeTab, setActiveTab] = useState('physics-toys');
     const [data, setData] = useState([]);
+    
   
     useEffect(() => {
       // Fetch data from API based on active tab

@@ -13,7 +13,7 @@ const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate 
     } = toys;
     return (
 
-        <tr className='text-center'>
+        <tr className={`${from && "text-center"}`}>
             <th>{rowNum + 1}</th>
             {/* <td>{pictureURL}</td> */}
             <td>{sellerName}</td>
@@ -21,7 +21,7 @@ const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate 
             <td>{subCategory}</td>
             <td>{price}</td>
             <td>{availableQuantity}</td>
-            <td className='text-center'>
+            <td>
                 {
                     !from ?
                         <Link to={`/toy/${_id}`} htmlFor="my-modal-3" className="btn btn-primary flex">Details<FaArrowRight /></Link>
