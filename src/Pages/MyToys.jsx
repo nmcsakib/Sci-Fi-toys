@@ -1,16 +1,20 @@
+
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import ToyDataRow from "./AllToys/ToyDataRow";
 import { useLocation } from "react-router-dom";
+
+import Modal from 'react-modal';
 import Swal from "sweetalert2";
+import UpdateToy from './UpdateToy';
 
 
 const MyToys = () => {
-    
+    const [modalIsOpen, setIsOpen] = useState(false);
     const location = useLocation()
-
     const {user} = useContext(AuthContext)
     const [toys, setToys] = useState([])
+    const [updateId, setUpdateID] = useState('')
     useEffect(() => {
         fetch(`http://localhost:5000/my-toys?email=${user?.email}`).then(res => res.json()).then(data => setToys(data))
     },[])
@@ -50,9 +54,22 @@ const MyToys = () => {
           })
        
       
-    }
+        }
+        function openModal() {
+          setIsOpen(true);
+        }
+      
+        function closeModal() {
+          setIsOpen(false);
+        }
+        const handelUpdate = id => {
+          console.log(id);
+          setUpdateID(id)
+        }
+        console.log(updateId);
     return (
         <div>
+             <div className={`${modalIsOpen ? "hidden" : ""}`}>
              <h2 className=" tracking-wide font-bold text-center bg-gradient-to-r from-yellow-500 to-pink-500 text-transparent bg-clip-text text-5xl py-5">Your Available toys</h2>
             <table className="table table-zebra w-full">
     {/* head */}
@@ -76,14 +93,26 @@ const MyToys = () => {
          rowNum={index}
          from={location}
          handelDelete={handelDelete}
+         handelUpdate={handelUpdate}
+         openModal={openModal}
+         
          />)
      }
      
     </tbody>
   </table>
-  {/* The button to open modal */}
+             </div>
   
-        </div>
+      <Modal 
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Example Modal"
+      >
+        <UpdateToy updateId={updateId} closeModal={closeModal}/>
+      </Modal>
+    </div>
+  
+        
     );
 };
 

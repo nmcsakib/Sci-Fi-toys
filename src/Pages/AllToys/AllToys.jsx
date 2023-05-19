@@ -4,7 +4,6 @@ import ToyDataRow from './ToyDataRow';
 
 const AllToys = () => {
     const allToys= useLoaderData()
-    console.log(allToys);
     const [toys, setToys] = useState(allToys)
     const [searchText, setSearchText] = useState('')
     const handelSearch = () => {

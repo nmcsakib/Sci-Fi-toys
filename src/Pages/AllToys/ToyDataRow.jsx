@@ -2,7 +2,7 @@
 import { FaArrowRight, FaPen } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const ToyDataRow = ({ toys, rowNum, from, handelDelete }) => {
+const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate }) => {
     const {
         _id,
         toyName,
@@ -28,7 +28,10 @@ const ToyDataRow = ({ toys, rowNum, from, handelDelete }) => {
                         :
                         <div className="btn-group">
                             
-                            <input type="radio" name="options" data-title="Update" className="btn" />
+                            <input onClick={() => {
+                                openModal()
+                                handelUpdate(_id)
+                            }} type="radio" name="options" data-title="Update" className="btn" />
 
                             <input onClick={() => handelDelete(_id)} type="radio" name="options" data-title="Delete" className="btn" />
 
