@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ToyDataRow from './ToyDataRow';
 import useTitleChange from '../../Hooks/useTitleChange';
+import ToyDetails from '../ToyDetails/ToyDetails';
 
 const AllToys = () => {
     const allToys= useLoaderData()
     const [toys, setToys] = useState(allToys)
+    const [toyId, setToyId] = useState('')
     const [searchText, setSearchText] = useState('')
+    const handelToyId = id => {
+      setToyId(id)
+    }
     const handelSearch = () => {
      fetch(`http://localhost:5000/searchToy/${searchText}`).then(res => res.json()).then(data => setToys(data) )
     }
@@ -45,13 +50,23 @@ const AllToys = () => {
     <tbody>
       {/* row 1 */}
      {
-        toys?.map((toys, index) => <ToyDataRow key={toys._id} toys={toys} rowNum={index}/>)
+        toys?.map((toys, index) => <ToyDataRow handelToyId={handelToyId} key={toys._id} toys={toys} rowNum={index}/>)
      }
      
     </tbody>
   </table>
 </div>
             </div>
+            
+            <input type="checkbox" id="my-modal" className="modal-toggle" />
+<div className="modal backdrop-blur-sm ">
+  <div className="modal-box max-w-none w-5/6 ">
+    <ToyDetails toyId={toyId}/>
+    <div className="modal-action absolute -top-6 right-0">
+      <label htmlFor="my-modal" className="btn btn-circle btn-outline">X</label>
+    </div>
+  </div>
+</div>
         </div>
     );
 };

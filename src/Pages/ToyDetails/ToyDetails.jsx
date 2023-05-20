@@ -1,14 +1,23 @@
 import { Rating } from '@smastrom/react-rating';
-import React from 'react';
-import { useLoaderData, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import useScrollTop from '../../Hooks/useScrollTop';
 import useTitleChange from '../../Hooks/useTitleChange';
+import { RotatingLines } from 'react-loader-spinner';
 
-const ToyDetails = () => {
+const ToyDetails = ({toyId}) => {
+  console.log(toyId);
   const {pathname} = useLocation()
+  const [toy, setToy ] = useState([])
+  const [load, setLoad] = useState(true);
+  useEffect(() => {
+    fetch(`http://localhost:5000/toy/${toyId}`).then(res => res.json()).then(data => {
+      setToy(data)
+      setLoad(false)
+    })
+  },[toyId])
   useScrollTop(pathname)
   const {
-    _id,
     toyName,
     sellerName,
     sellerEmail,
@@ -19,31 +28,41 @@ const ToyDetails = () => {
     pictureURL,
     detailDescription
     
-  } = useLoaderData()
+  } = toy;
   useTitleChange(`${toyName}`)
-  console.log(toyName);
     return (
-       <div className="hero min-h-screen bg-base-200">
-  <div className="hero-content flex-col lg:flex-row">
+       <div className="hero bg-base-200 ">
+ { 
+ load ? <div className="w-full h-screen flex justify-center items-center">
+ <RotatingLines
+  strokeColor="grey"
+  strokeWidth="5"
+  animationDuration="0.75"
+  width="96"
+  visible={true}
+/>
+</div> 
+ :
+ <div className="hero-content flex-col lg:flex-row">
     <img src={pictureURL} className="max-w-sm rounded-lg shadow-2xl" />
     <div>
-      <h1 className="text-5xl font-bold">{toyName}</h1>
+      <h1 className="text-4xl font-bold">{toyName}</h1>
       <p className="text-sm mt-2">Category: {subCategory}</p>
-      <p className="py-6">{detailDescription}</p>
+      <p className="py-6">{detailDescription?.length > 150 ?(detailDescription)?.slice(0, 150) + "..." : detailDescription}</p>
       <div className="stats shadow">
   
-      <div className="stats stats-vertical shadow w-full">
+      <div className="stats md:stats-vertical shadow w-full">
   
   
   <div className="stat">
     <div className="stat-title">Seller</div>
-    <div className="stat-value">{sellerName}</div>
+    <div className="stat-value text-2xl">{sellerName}</div>
     <div className="stat-desc">{sellerEmail}</div>
   </div>
   
   <div className="stat">
     <div className="stat-title">Price</div>
-    <div className="stat-value">${price}</div>
+    <div className="stat-value text-3xl">${price}</div>
     <div className="stat-desc">Available: {availableQuantity}</div>
   </div>
   
@@ -58,7 +77,7 @@ const ToyDetails = () => {
   
 </div>
     </div>
-  </div>
+  </div>}
 </div>
     );
 };

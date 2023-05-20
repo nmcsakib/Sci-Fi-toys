@@ -2,7 +2,7 @@
 import { FaArrowRight, FaPen } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate }) => {
+const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate, handelToyId }) => {
     const {
         _id,
         toyName,
@@ -24,7 +24,10 @@ const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate 
             <td>
                 {
                     !from ?
-                        <Link to={`/toy/${_id}`} htmlFor="my-modal-3" className="btn btn-primary flex">Details<FaArrowRight /></Link>
+                    <label htmlFor="my-modal"><button onClick={() => handelToyId(_id)} className="btn btn-primary flex">
+                        <label htmlFor="my-modal">Details<FaArrowRight />
+                        </label></button></label>
+                        
                         :
                         <div className="btn-group">
                             

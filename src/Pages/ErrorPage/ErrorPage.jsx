@@ -4,7 +4,7 @@ import useTitleChange from '../../Hooks/useTitleChange';
 
 const ErrorPage = () => {
     const error = useRouteError()
-    useTitleChange(`${error?.status} ${error?.statusText}`)
+    useTitleChange(`${error?.status || "404"} ${error?.statusText || "Not found"}`)
     console.log(error);
     return (
         <div>
