@@ -15,7 +15,7 @@ const Main = () => {
  
            </div>
             <Footer/>
-            <ToastContainer position="top-center"/>
+            <ToastContainer/>
         </div>
     );
 };

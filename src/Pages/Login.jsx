@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import useTitleChange from "../Hooks/useTitleChange";
 
 const Login = () => {
+    useTitleChange('Login')
     const navigate = useNavigate()
     const location = useLocation()
     const from = location?.state?.from.pathname;

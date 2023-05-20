@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ToyDataRow from './ToyDataRow';
+import useTitleChange from '../../Hooks/useTitleChange';
 
 const AllToys = () => {
     const allToys= useLoaderData()
@@ -9,8 +10,10 @@ const AllToys = () => {
     const handelSearch = () => {
      fetch(`http://localhost:5000/searchToy/${searchText}`).then(res => res.json()).then(data => setToys(data) )
     }
+    useTitleChange('All Toys')
     return (
         <div>
+         
             <h2 className=" tracking-wide font-bold text-center bg-gradient-to-r from-yellow-500 to-pink-500 text-transparent bg-clip-text text-5xl py-5">All toys</h2>
             <div>
             <div className="overflow-x-auto">

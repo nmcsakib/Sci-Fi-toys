@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import useTitleChange from "../Hooks/useTitleChange";
 
 
 const Register = () => {
+    useTitleChange('Register')
     const {createUser, update} = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate()

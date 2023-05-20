@@ -1,7 +1,8 @@
 import { Rating } from '@smastrom/react-rating';
 import React from 'react';
 import { useLoaderData, useLocation } from 'react-router-dom';
-import useScrollTop from '../../useScrollTop';
+import useScrollTop from '../../Hooks/useScrollTop';
+import useTitleChange from '../../Hooks/useTitleChange';
 
 const ToyDetails = () => {
   const {pathname} = useLocation()
@@ -17,8 +18,9 @@ const ToyDetails = () => {
     availableQuantity,
     pictureURL,
     detailDescription
-
+    
   } = useLoaderData()
+  useTitleChange(`${toyName}`)
   console.log(toyName);
     return (
        <div className="hero min-h-screen bg-base-200">

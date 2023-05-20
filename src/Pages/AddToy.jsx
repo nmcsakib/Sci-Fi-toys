@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useContext } from "react";
+import useTitleChange from "../Hooks/useTitleChange";
 const AddToy = () => {
-    
+    useTitleChange('Add a toy')
   const {user} = useContext(AuthContext)
   const { register, handleSubmit, reset } = useForm();
 

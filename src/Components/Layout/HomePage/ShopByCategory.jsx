@@ -19,7 +19,7 @@ const ShopByCategory = () => {
       
     return (
         <>
-         <h2 className=" tracking-wide font-bold text-center bg-gradient-to-r from-yellow-500 to-pink-500 text-transparent bg-clip-text text-5xl py-5"> Choose your favorite Category toys!</h2>
+         <h2 className=" tracking-wide font-bold text-center bg-gradient-to-r from-yellow-500 to-pink-500 text-transparent bg-clip-text text-5xl py-5"> Choose your favorite Category's toys!</h2>
         <div className='min-h-screen bg-red-200 flex  justify-center'>
             
             <hr className='bg-black' />

@@ -3,8 +3,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { AuthContext } from '../Provider/AuthProvider';
-const UpdateToy = ({closeModal, updateId}) => {
+import useTitleChange from '../Hooks/useTitleChange';
+const UpdateToy = ({closeModal, updateId, handelUpdateInfo}) => {
   const [toy, setToy] = useState([])
+  console.log(toy);
+  useTitleChange(`Update toy`)
   const {price, availableQuantity, detailDescription} = toy;
     console.log(updateId);
     useEffect(() => {
@@ -13,9 +16,13 @@ const UpdateToy = ({closeModal, updateId}) => {
       })
     },[])
   const {user} = useContext(AuthContext)
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    data.price = parseFloat(data.price)
+    setValue('price', '')
+    setValue('availableQuantity', '')
+    setValue('detailDescription', '')
+    handelUpdateInfo(data)
   }
     return (
         <div className='bg-pink-200 z-50'>
@@ -30,9 +37,9 @@ const UpdateToy = ({closeModal, updateId}) => {
         >
          Price
         </label>
-        <input defaultValue={price} {...register("price", {required: true})}
-          type="text"
-          placeholder="5"
+        <input defaultValue={price} {...register("price", {required: true, maxLength: 3})}
+          type="number"
+          step="0.01"
           className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         />
 
@@ -74,7 +81,7 @@ const UpdateToy = ({closeModal, updateId}) => {
 
       
       <div>
-        <button
+        <button type="submit" 
           className="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
         >
           Submit

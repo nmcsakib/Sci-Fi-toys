@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import Modal from 'react-modal';
 import Swal from "sweetalert2";
 import UpdateToy from './UpdateToy';
+import { toast } from "react-toastify";
 
 
 const MyToys = () => {
@@ -26,6 +27,31 @@ const MyToys = () => {
     fetch(`http://localhost:5000/my-toys?email=${user?.email}`).then(res => res.json()).then(data => setToys(data))
   }, [])
 
+  const handelUpdateInfo = (toyData) => {
+    fetch(`http://localhost:5000/toy/${updateId}`,{
+      method: "PUT",
+      headers: {
+        "content-type" : "application/json"
+      },
+      body: JSON.stringify(toyData)
+    }).then(res => res.json()).then(data => {
+      console.log(data);
+      if(data.modifiedCount>0){
+        toast('Toy data updated')
+        const updated = toys.find(t => t._id === updateId)
+        updated.price = toyData.price;
+        updated.availableQuantity = toyData.availableQuantity;
+        updated.detailDescription = toyData.detailDescription;
+        console.log(updated);
+        console.log('from 46',toyData);
+        const remaining = toys.filter(t => t._id !== updateId)
+        console.log(remaining);
+        const total = [...remaining, updated]
+        setToys(total)
+      }
+    })
+  
+  }
   const handelDelete = id => {
     Swal.fire({
       title: 'Are you sure?',
@@ -122,7 +148,7 @@ const MyToys = () => {
         onRequestClose={closeModal}
         contentLabel="Example Modal"
       >
-        <UpdateToy updateId={updateId} closeModal={closeModal} />
+        <UpdateToy updateId={updateId} handelUpdateInfo={handelUpdateInfo} closeModal={closeModal} />
       </Modal>
     </div>
 
