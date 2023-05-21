@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
-import { AuthContext } from '../Provider/AuthProvider';
 import useTitleChange from '../Hooks/useTitleChange';
 const UpdateToy = ({ updateId, handelUpdateInfo }) => {
   console.log(updateId);
@@ -10,7 +8,7 @@ const UpdateToy = ({ updateId, handelUpdateInfo }) => {
   useTitleChange(`Update toy`)
   console.log(updateId);
   useEffect(() => {
-    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/toy/${updateId}?some=somedata`).then(res => res.json()).then(data => {
+    fetch(`http://localhost:5000/toy/${updateId}?some=somedata`).then(res => res.json()).then(data => {
       setToy(data)
     })
   }, [updateId])
@@ -23,7 +21,7 @@ const UpdateToy = ({ updateId, handelUpdateInfo }) => {
     setValue('availableQuantity', '')
     setValue('detailDescription', '')
     handelUpdateInfo(data)
-    console.log(data);
+      
   }
   return (
     <div className='bg-pink-200 z-50'>

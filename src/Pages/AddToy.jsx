@@ -11,20 +11,20 @@ const AddToy = () => {
 
   const onSubmit = (data) => {
     data.price = parseFloat(data.price.replace("$", ''))
-    fetch('https://sci-fi-toy-server-nmcsakib.vercel.app/allToys/', {
+    fetch('http://localhost:5000/allToys/', {
       method: "POST",
       headers: {
         "content-type": "application/json"
       },
       body: JSON.stringify(data)
     }).then(res => res.json()).then(data => {
-      console.log(data);
+        
       if (data.insertedId) {
         reset()
         toast('Toy added Successfully')
       }
     })
-    console.log(data);
+      
 
   };
 

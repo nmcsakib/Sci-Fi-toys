@@ -11,7 +11,7 @@ const ShopByCategory = () => {
 
     useEffect(() => {
         // Fetch data from API based on active tab
-        fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/subCategoryToys/${activeTab}`).then((res) => res.json()).then(data => setData(data))
+        fetch(`http://localhost:5000/subCategoryToys/${activeTab}`).then((res) => res.json()).then(data => setData(data))
     }, [activeTab]);
     const handleTabClick = (tab) => {
         setActiveTab(tab);
@@ -32,7 +32,7 @@ const ShopByCategory = () => {
                     <div className='p-10'>
 
                         <TabPanel>
-                            <div className='grid md:grid-cols-2 gap-5'>
+                            <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
 
                                 {
                                     data?.map(toy => <ToyCard key={toy._id} toy={toy}></ToyCard>)

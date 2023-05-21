@@ -1,20 +1,32 @@
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation } from 'react-router-dom';
 import ToyDataRow from './ToyDataRow';
 import useTitleChange from '../../Hooks/useTitleChange';
+import useScrollTop from '../../Hooks/useScrollTop';
 import ToyDetails from './ToyDetails/ToyDetails';
+import { RotatingLines } from 'react-loader-spinner';
 
 const AllToys = () => {
   const allToys = useLoaderData()
+  console.log(allToys);
+  const {pathname} = useLocation()
   const [toys, setToys] = useState(allToys)
   const [toyId, setToyId] = useState('')
   const [searchText, setSearchText] = useState('')
+  const [load, setLoad] = useState(true)
   const handelToyId = id => {
+     
     setToyId(id)
   }
   const handelSearch = () => {
-    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/searchToy/${searchText}`).then(res => res.json()).then(data => setToys(data))
+    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/searchToy/${searchText}`).then(res => res.json()).then(data => {
+      setToys(data)
+    })
   }
+  if(allToys && toys){
+    setLoad(false)
+  }
+  useScrollTop(pathname)
   useTitleChange('All Toys')
   return (
     <div>
@@ -50,6 +62,16 @@ const AllToys = () => {
             <tbody>
               {/* row 1 */}
               {
+                 load ? <div className="w-full h-screen flex justify-center items-center">
+                 <RotatingLines
+                   strokeColor="grey"
+                   strokeWidth="5"
+                   animationDuration="0.75"
+                   width="96"
+                   visible={true}
+                 />
+               </div>
+                 :
                 toys?.map((toys, index) => <ToyDataRow handelToyId={handelToyId} key={toys._id} toys={toys} rowNum={index} />)
               }
 

@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { toast } from 'react-toastify';
 
-const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate, handelToyId }) => {
+const ToyDataRow = ({ toys, rowNum, from, handelDelete, handelUpdate, handelToyId }) => {
     const { user } = useContext(AuthContext)
     const location = useLocation()
     const {
@@ -41,7 +41,7 @@ const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate,
                         :
                         <div className="btn-group">
 
-                            <button onClick={() => handelUpdate(_id)} className="btn"><label htmlFor="my-modal-update" className='flex gap-3'>Button</label></button>
+                            <button onClick={() => handelUpdate(_id)} className="btn"><label htmlFor="my-modal-update" className='flex gap-3'>Update</label></button>
                             
 
                             <input onClick={() => handelDelete(_id)} type="radio" name="options" data-title="Delete" className="btn" />

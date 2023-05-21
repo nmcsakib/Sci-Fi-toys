@@ -20,5 +20,5 @@
 }
 
 .section-title {
-    @apply tracking-wide font-bold text-center bg-gradient-to-r from-yellow-500 to-pink-500 text-transparent bg-clip-text text-4xl md: text-5xl py-5
+    @apply tracking-wide font-bold text-center bg-gradient-to-r from-yellow-500 to-pink-500 text-transparent bg-clip-text text-4xl md:text-5xl py-5
 }

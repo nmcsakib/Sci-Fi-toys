@@ -15,24 +15,24 @@ const MyToys = () => {
   const [updateId, setUpdateID] = useState('')
   const handelSorting = (e) => {
     const num = e.target.value;
-    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/my-toys/${num}?email=${user?.email}`).then(res => res.json()).then(data => {
-      console.log(data);
+    fetch(`http://localhost:5000/my-toys/${num}?email=${user?.email}`).then(res => res.json()).then(data => {
+        
       setToys(data)
     })
   }
   useEffect(() => {
-    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/my-toys?email=${user?.email}`).then(res => res.json()).then(data => setToys(data))
+    fetch(`http://localhost:5000/my-toys?email=${user?.email}`).then(res => res.json()).then(data => setToys(data))
   }, [])
 
   const handelUpdateInfo = (toyData) => {
-    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/toy/${updateId}`, {
+    fetch(`http://localhost:5000/toy/${updateId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json"
       },
       body: JSON.stringify(toyData)
     }).then(res => res.json()).then(data => {
-      console.log(data);
+        
       if (data.modifiedCount > 0) {
         toast('Toy data updated')
         const updated = toys.find(t => t._id === updateId)
@@ -61,13 +61,13 @@ const MyToys = () => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/allToys/${id}`, {
+        fetch(`http://localhost:5000/allToys/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json"
           }
         }).then(res => res.json()).then(data => {
-          console.log(data);
+            
           if (data.deletedCount > 0) {
             Swal.fire(
               'Deleted!',
@@ -88,7 +88,7 @@ const MyToys = () => {
 
 
   const handelUpdate = id => {
-    console.log(id);
+     
     setUpdateID(id)
   }
   console.log(updateId);
