@@ -12,4 +12,4 @@
 - Read blogs to enrich your knowledge about toys
 <hr/>
 
-## visit [Sci-Fi toy](https://sci-fi-toy.web.app)
+## visit [Sci-Fi toy](https://sci-fi-toys.web.app)

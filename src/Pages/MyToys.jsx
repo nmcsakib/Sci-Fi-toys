@@ -25,29 +25,29 @@ const MyToys = () => {
   }, [])
 
   const handelUpdateInfo = (toyData) => {
-    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/toy/${updateId}`,{
+    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/toy/${updateId}`, {
       method: "PUT",
       headers: {
-        "content-type" : "application/json"
+        "content-type": "application/json"
       },
       body: JSON.stringify(toyData)
     }).then(res => res.json()).then(data => {
       console.log(data);
-      if(data.modifiedCount>0){
+      if (data.modifiedCount > 0) {
         toast('Toy data updated')
         const updated = toys.find(t => t._id === updateId)
         updated.price = toyData.price;
         updated.availableQuantity = toyData.availableQuantity;
         updated.detailDescription = toyData.detailDescription;
         console.log(updated);
-        console.log('from 46',toyData);
+        console.log('from 46', toyData);
         const remaining = toys.filter(t => t._id !== updateId)
         console.log(remaining);
         const total = [...remaining, updated]
         setToys(total)
       }
     })
-  
+
   }
   const handelDelete = id => {
     Swal.fire({
@@ -85,8 +85,8 @@ const MyToys = () => {
 
 
   }
-  
-  
+
+
   const handelUpdate = id => {
     console.log(id);
     setUpdateID(id)
@@ -126,7 +126,7 @@ const MyToys = () => {
                 from={location}
                 handelDelete={handelDelete}
                 handelUpdate={handelUpdate}
-                
+
 
               />)
             }
@@ -134,14 +134,14 @@ const MyToys = () => {
           </tbody>
         </table>
         <input type="checkbox" id="my-modal-update" className="modal-toggle" />
-<div className="modal backdrop-blur-sm ">
-  <div className="modal-box max-w-none w-5/6 ">
-    <UpdateToy updateId={updateId} handelUpdateInfo={handelUpdateInfo} />
-    <div className="modal-action absolute -top-6 right-0">
-      
-    </div>
-  </div>
-</div>
+        <div className="modal backdrop-blur-sm ">
+          <div className="modal-box max-w-none w-5/6 ">
+            <UpdateToy updateId={updateId} handelUpdateInfo={handelUpdateInfo} />
+            <div className="modal-action absolute -top-6 right-0">
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

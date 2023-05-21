@@ -7,6 +7,6 @@ import router from './routers/routes'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </AuthProvider>
 )

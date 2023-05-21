@@ -2,14 +2,14 @@ import React from 'react';
 import Marquee from "react-fast-marquee";
 const Partners = () => {
     const partners = [
-         "https://i.ibb.co/frq3xhh/daraz.webp",
-         "https://i.ibb.co/mJY0sKM/Unimart-Logo.webp",
-         "https://i.ibb.co/CwYcZCC/togu-mogu.webp",
-         "https://i.ibb.co/pdsq93w/shwapno.webp",
-         "https://i.ibb.co/XDJpYD0/rokomari.webp",
-         "https://i.ibb.co/BGzmB3P/panda-mart.webp",
-         "https://i.ibb.co/z28WMQp/kids-mom.webp",
-         "https://i.ibb.co/1vG4NQZ/lavander.webp"
+        "https://i.ibb.co/frq3xhh/daraz.webp",
+        "https://i.ibb.co/mJY0sKM/Unimart-Logo.webp",
+        "https://i.ibb.co/CwYcZCC/togu-mogu.webp",
+        "https://i.ibb.co/pdsq93w/shwapno.webp",
+        "https://i.ibb.co/XDJpYD0/rokomari.webp",
+        "https://i.ibb.co/BGzmB3P/panda-mart.webp",
+        "https://i.ibb.co/z28WMQp/kids-mom.webp",
+        "https://i.ibb.co/1vG4NQZ/lavander.webp"
     ]
     return (
         <div>
@@ -24,7 +24,7 @@ const Partners = () => {
                 <img src={partners[5]} className='w-36 h-20 mx-3' alt="" />
                 <img src={partners[6]} className='w-36 h-20 mx-3' alt="" />
                 <img src={partners[7]} className='w-36 h-20 mx-3' alt="" />
-       
+
             </Marquee>
         </div>
     );

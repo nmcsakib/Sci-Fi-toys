@@ -11,16 +11,16 @@ import useTitleChange from '../../../Hooks/useTitleChange';
 import Partners from './Partners';
 AOS.init()
 const Home = () => {
-    const {pathname} = useLocation()
+    const { pathname } = useLocation()
     useScrollTop(pathname)
     useTitleChange('Home')
     return (
         <div>
-           <Banner/>
-           <Gallery/>
-           <Partners/>
-           <ShopByCategory/>
-           <Subscription/>
+            <Banner />
+            <Gallery />
+            <Partners />
+            <ShopByCategory />
+            <Subscription />
         </div>
     );
 };

@@ -3,16 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 import useTitleChange from '../../../Hooks/useTitleChange';
 
-const ToyDetails = ({toyId}) => {
+const ToyDetails = ({ toyId }) => {
   console.log(toyId);
-  const [toy, setToy ] = useState([])
+  const [toy, setToy] = useState([])
   const [load, setLoad] = useState(true);
   useEffect(() => {
     fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/toy/${toyId}`).then(res => res.json()).then(data => {
       setToy(data)
       setLoad(false)
     })
-  },[toyId])
+  }, [toyId])
   const {
     toyName,
     sellerName,
@@ -23,59 +23,59 @@ const ToyDetails = ({toyId}) => {
     availableQuantity,
     pictureURL,
     detailDescription
-    
+
   } = toy;
   useTitleChange(`${toyName}`)
-    return (
-       <div className="hero bg-base-200 ">
- { 
- load ? <div className="w-full h-screen flex justify-center items-center">
- <RotatingLines
-  strokeColor="grey"
-  strokeWidth="5"
-  animationDuration="0.75"
-  width="96"
-  visible={true}
-/>
-</div> 
- :
- <div className="hero-content flex-col lg:flex-row">
-    <img src={pictureURL} className="max-w-sm rounded-lg shadow-2xl" />
-    <div>
-      <h1 className="text-4xl font-bold">{toyName}</h1>
-      <p className="text-sm mt-2">Category: {subCategory}</p>
-      <p className="py-6">{detailDescription?.length > 150 ?(detailDescription)?.slice(0, 150) + "...Read more" : detailDescription}</p>
-      <div className="stats shadow">
-  
-      <div className="stats md:stats-vertical shadow w-full">
-  
-  
-  <div className="stat">
-    <div className="stat-title">Seller</div>
-    <div className="stat-value text-2xl">{sellerName}</div>
-    <div className="stat-desc">{sellerEmail}</div>
-  </div>
-  
-  <div className="stat">
-    <div className="stat-title">Price</div>
-    <div className="stat-value text-3xl">${price}</div>
-    <div className="stat-desc">Available: {availableQuantity}</div>
-  </div>
-  
-  <div className="stat">
-    <div className="stat-title">Ratings</div>
-    <div className="stat-value"> <Rating style={{ maxWidth: 120 }} readOnly value={rating} />
+  return (
+    <div className="hero bg-base-200 ">
+      {
+        load ? <div className="w-full h-screen flex justify-center items-center">
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+        </div>
+          :
+          <div className="hero-content flex-col lg:flex-row">
+            <img src={pictureURL} className="max-w-sm rounded-lg shadow-2xl" />
+            <div>
+              <h1 className="text-4xl font-bold">{toyName}</h1>
+              <p className="text-sm mt-2">Category: {subCategory}</p>
+              <p className="py-6">{detailDescription?.length > 150 ? (detailDescription)?.slice(0, 150) + "...Read more" : detailDescription}</p>
+              <div className="stats shadow">
+
+                <div className="stats md:stats-vertical shadow w-full">
+
+
+                  <div className="stat">
+                    <div className="stat-title">Seller</div>
+                    <div className="stat-value text-2xl">{sellerName}</div>
+                    <div className="stat-desc">{sellerEmail}</div>
+                  </div>
+
+                  <div className="stat">
+                    <div className="stat-title">Price</div>
+                    <div className="stat-value text-3xl">${price}</div>
+                    <div className="stat-desc">Available: {availableQuantity}</div>
+                  </div>
+
+                  <div className="stat">
+                    <div className="stat-title">Ratings</div>
+                    <div className="stat-value"> <Rating style={{ maxWidth: 120 }} readOnly value={rating} />
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>}
     </div>
-    
-  </div>
-  
-</div>
-  
-</div>
-    </div>
-  </div>}
-</div>
-    );
+  );
 };
 
 export default ToyDetails;

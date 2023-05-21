@@ -6,7 +6,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { toast } from 'react-toastify';
 
 const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate, handelToyId }) => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const location = useLocation()
     const {
         _id,
@@ -29,23 +29,20 @@ const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate,
             <td>
                 {
                     !from ?
-                    user ?
-                    <button onClick={() => handelToyId(_id)} >
-                        <label htmlFor="my-modal" className='flex btn btn-primary gap-3'>Details<FaArrowRight />
-                        </label></button>
-                        :
-                        <Link to="/login" state={{from: location}} onClick={() => toast('Login first to see details')} className="btn btn-primary flex">
-                       Details<FaArrowRight />
-                      </Link>
-                        
+                        user ?
+                            <button onClick={() => handelToyId(_id)} >
+                                <label htmlFor="my-modal" className='flex btn btn-primary gap-3'>Details<FaArrowRight />
+                                </label></button>
+                            :
+                            <Link to="/login" state={{ from: location }} onClick={() => toast('Login first to see details')} className="btn btn-primary flex">
+                                Details<FaArrowRight />
+                            </Link>
+
                         :
                         <div className="btn-group">
+
+                            <button onClick={() => handelUpdate(_id)} className="btn"><label htmlFor="my-modal-update" className='flex gap-3'>Button</label></button>
                             
-                        <button onClick={() =>  handelUpdate(_id)} className="btn"><label htmlFor="my-modal-update" className='flex gap-3'>Button</label></button>
-                            {/* <input onClick={() => {
-                                // openModal()
-                                handelUpdate(_id)
-                            }} type="radio" name="options" data-title="Update" className="btn" /> */}
 
                             <input onClick={() => handelDelete(_id)} type="radio" name="options" data-title="Delete" className="btn" />
 
@@ -53,7 +50,7 @@ const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate,
             </td>
 
         </tr>
-        
+
 
     );
 };

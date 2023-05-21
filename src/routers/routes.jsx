@@ -12,47 +12,47 @@ import Blog from "../Pages/Blog/Blog";
 import ToyDetails from "../Pages/AllToys/ToyDetails/ToyDetails";
 
 
- const router = createBrowserRouter([
+const router = createBrowserRouter([
     {
         path: '/',
-        element: <Main/>,
-        errorElement: <ErrorPage/>,
+        element: <Main />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: 'all-toys',
-                element: <AllToys/>,
-                loader: ()=> fetch('https://sci-fi-toy-server-nmcsakib.vercel.app/allToys')
+                element: <AllToys />,
+                loader: () => fetch('https://sci-fi-toy-server-nmcsakib.vercel.app/allToys')
             },
             {
                 path: '/toy/:id',
-                element: <ToyDetails/>,
-                
+                element: <ToyDetails />,
+
             },
             {
                 path: '/my-toys',
-                element: <PrivateRoute><MyToys/></PrivateRoute>
+                element: <PrivateRoute><MyToys /></PrivateRoute>
             },
             {
                 path: 'add-a-toy',
-                element: <PrivateRoute><AddToy/></PrivateRoute>,
+                element: <PrivateRoute><AddToy /></PrivateRoute>,
             },
             {
                 path: 'blogs',
-                element: <Blog/>,
+                element: <Blog />,
             },
             {
                 path: 'login',
-                element: <Login/>
+                element: <Login />
             },
             {
                 path: 'register',
-                element: <Register/>
+                element: <Register />
             }
-            
+
         ]
     }
 ])
