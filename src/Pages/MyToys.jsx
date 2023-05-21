@@ -26,7 +26,7 @@ const MyToys = () => {
 
   const handelUpdateInfo = (toyData) => {
     fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/toy/${updateId}`, {
-    
+    mode: 'no-cors',
       method: "PUT",
       headers: {
         "content-type": "application/json"

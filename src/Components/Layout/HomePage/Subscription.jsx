@@ -3,7 +3,7 @@ import React from 'react';
 const Subscription = () => {
   return (
     <div className="flex h-96 items-center justify-center bg-[#FC477E]/50">
-      <div className="grid w-2/4 grid-rows-4 gap-1" data-aos="zoom-in" data-aos-delay="500">
+      <div className="grid mt-10 w-3/4 md:w-2/4 grid-rows-4 gap-1" data-aos="zoom-in" data-aos-delay="500">
         <p className="font-semibold text-gray-700">💌 Get the best TOYs and their information, directly in your inbox.</p>
         <input type="text" className="h-10 w-full rounded border p-2 text-sm" placeholder="Your email" />
         <button className="rounded bg-[#FD5E57] text-gray-50 hover:bg-gradient-to-r hover:from-[#FD5E57] hover:to-[#FC477E]">Subscribe to the newsletter</button>

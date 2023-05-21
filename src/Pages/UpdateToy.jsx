@@ -8,7 +8,7 @@ const UpdateToy = ({ updateId, handelUpdateInfo }) => {
   useTitleChange(`Update toy`)
   console.log(updateId);
   useEffect(() => {
-    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/toy/${updateId}?some=somedata`,).then(res => res.json()).then(data => {
+    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/toy/${updateId}?some=somedata`,{mode: 'no-cors'}).then(res => res.json()).then(data => {
       setToy(data)
     })
   }, [updateId])
