@@ -12,4 +12,7 @@
 - Read blogs to enrich your knowledge about toys
 <hr/>
 
+`shell 
+If you can't see any data rather error message please *Reload* more than 10 times.
+ `
 ## visit [Sci-Fi toy](https://sci-fi-toys.web.app)

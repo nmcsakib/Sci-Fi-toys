@@ -25,7 +25,8 @@ const router = createBrowserRouter([
             {
                 path: 'all-toys',
                 element: <AllToys />,
-                loader: () => fetch('http://localhost:5000/allToys')
+                loader: ()=> fetch('https://sci-fi-toy-server-nmcsakib.vercel.app/allToys')
+                
             },
             {
                 path: '/toy/:id',

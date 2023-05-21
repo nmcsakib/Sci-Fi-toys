@@ -11,7 +11,7 @@ const AddToy = () => {
 
   const onSubmit = (data) => {
     data.price = parseFloat(data.price.replace("$", ''))
-    fetch('http://localhost:5000/allToys/', {
+    fetch('https://sci-fi-toy-server-nmcsakib.vercel.app/allToys/', {
       method: "POST",
       headers: {
         "content-type": "application/json"

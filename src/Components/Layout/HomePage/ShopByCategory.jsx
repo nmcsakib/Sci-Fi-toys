@@ -11,7 +11,7 @@ const ShopByCategory = () => {
 
     useEffect(() => {
         // Fetch data from API based on active tab
-        fetch(`http://localhost:5000/subCategoryToys/${activeTab}`).then((res) => res.json()).then(data => setData(data))
+        fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/subCategoryToys/${activeTab}`).then((res) => res.json()).then(data => setData(data))
     }, [activeTab]);
     const handleTabClick = (tab) => {
         setActiveTab(tab);

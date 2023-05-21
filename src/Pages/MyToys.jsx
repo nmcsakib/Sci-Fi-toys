@@ -15,17 +15,18 @@ const MyToys = () => {
   const [updateId, setUpdateID] = useState('')
   const handelSorting = (e) => {
     const num = e.target.value;
-    fetch(`http://localhost:5000/my-toys/${num}?email=${user?.email}`).then(res => res.json()).then(data => {
+    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/my-toys/${num}?email=${user?.email}`).then(res => res.json()).then(data => {
         
       setToys(data)
     })
   }
   useEffect(() => {
-    fetch(`http://localhost:5000/my-toys?email=${user?.email}`).then(res => res.json()).then(data => setToys(data))
+    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/my-toys?email=${user?.email}`).then(res => res.json()).then(data => setToys(data))
   }, [])
 
   const handelUpdateInfo = (toyData) => {
-    fetch(`http://localhost:5000/toy/${updateId}`, {
+    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/toy/${updateId}`, {
+    
       method: "PUT",
       headers: {
         "content-type": "application/json"
@@ -61,7 +62,7 @@ const MyToys = () => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        fetch(`http://localhost:5000/allToys/${id}`, {
+        fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/allToys/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json"
