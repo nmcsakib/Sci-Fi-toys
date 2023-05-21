@@ -3,32 +3,29 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import ToyDataRow from "./AllToys/ToyDataRow";
 import { useLocation } from "react-router-dom";
-
-import Modal from 'react-modal';
 import Swal from "sweetalert2";
 import UpdateToy from './UpdateToy';
 import { toast } from "react-toastify";
 
 
 const MyToys = () => {
-  const [modalIsOpen, setIsOpen] = useState(false);
   const location = useLocation()
   const { user } = useContext(AuthContext)
   const [toys, setToys] = useState([])
   const [updateId, setUpdateID] = useState('')
   const handelSorting = (e) => {
     const num = e.target.value;
-    fetch(`http://localhost:5000/my-toys/${num}?email=${user?.email}`).then(res => res.json()).then(data => {
+    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/my-toys/${num}?email=${user?.email}`).then(res => res.json()).then(data => {
       console.log(data);
       setToys(data)
     })
   }
   useEffect(() => {
-    fetch(`http://localhost:5000/my-toys?email=${user?.email}`).then(res => res.json()).then(data => setToys(data))
+    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/my-toys?email=${user?.email}`).then(res => res.json()).then(data => setToys(data))
   }, [])
 
   const handelUpdateInfo = (toyData) => {
-    fetch(`http://localhost:5000/toy/${updateId}`,{
+    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/toy/${updateId}`,{
       method: "PUT",
       headers: {
         "content-type" : "application/json"
@@ -64,7 +61,7 @@ const MyToys = () => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        fetch(`http://localhost:5000/allToys/${id}`, {
+        fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/allToys/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json"
@@ -88,13 +85,8 @@ const MyToys = () => {
 
 
   }
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+  
+  
   const handelUpdate = id => {
     console.log(id);
     setUpdateID(id)
@@ -102,7 +94,7 @@ const MyToys = () => {
   console.log(updateId);
   return (
     <div>
-      <div className={`${modalIsOpen ? "hidden" : ""}`}>
+      <div>
         <h2 className=" tracking-wide font-bold text-center bg-gradient-to-r from-yellow-500 to-pink-500 text-transparent bg-clip-text text-5xl py-5">Your Available toys</h2>
         <div className="bg-pink-200 flex">
           <select className="w-64 ml-auto  rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" id="subCategory" onChange={handelSorting}>
@@ -134,22 +126,23 @@ const MyToys = () => {
                 from={location}
                 handelDelete={handelDelete}
                 handelUpdate={handelUpdate}
-                openModal={openModal}
+                
 
               />)
             }
 
           </tbody>
         </table>
+        <input type="checkbox" id="my-modal-update" className="modal-toggle" />
+<div className="modal backdrop-blur-sm ">
+  <div className="modal-box max-w-none w-5/6 ">
+    <UpdateToy updateId={updateId} handelUpdateInfo={handelUpdateInfo} />
+    <div className="modal-action absolute -top-6 right-0">
+      
+    </div>
+  </div>
+</div>
       </div>
-
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Example Modal"
-      >
-        <UpdateToy updateId={updateId} handelUpdateInfo={handelUpdateInfo} closeModal={closeModal} />
-      </Modal>
     </div>
 
 

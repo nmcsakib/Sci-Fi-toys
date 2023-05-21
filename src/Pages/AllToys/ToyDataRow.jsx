@@ -1,8 +1,13 @@
 
+import { useContext } from 'react';
 import { FaArrowRight, FaPen } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate, handelToyId }) => {
+    const {user} = useContext(AuthContext)
+    const location = useLocation()
     const {
         _id,
         toyName,
@@ -24,17 +29,23 @@ const ToyDataRow = ({ toys, rowNum, from, handelDelete, openModal, handelUpdate,
             <td>
                 {
                     !from ?
-                    <label htmlFor="my-modal"><button onClick={() => handelToyId(_id)} className="btn btn-primary flex">
-                        <label htmlFor="my-modal">Details<FaArrowRight />
-                        </label></button></label>
+                    user ?
+                    <button onClick={() => handelToyId(_id)} >
+                        <label htmlFor="my-modal" className='flex btn btn-primary gap-3'>Details<FaArrowRight />
+                        </label></button>
+                        :
+                        <Link to="/login" state={{from: location}} onClick={() => toast('Login first to see details')} className="btn btn-primary flex">
+                       Details<FaArrowRight />
+                      </Link>
                         
                         :
                         <div className="btn-group">
                             
-                            <input onClick={() => {
-                                openModal()
+                        <button onClick={() =>  handelUpdate(_id)} className="btn"><label htmlFor="my-modal-update" className='flex gap-3'>Button</label></button>
+                            {/* <input onClick={() => {
+                                // openModal()
                                 handelUpdate(_id)
-                            }} type="radio" name="options" data-title="Update" className="btn" />
+                            }} type="radio" name="options" data-title="Update" className="btn" /> */}
 
                             <input onClick={() => handelDelete(_id)} type="radio" name="options" data-title="Delete" className="btn" />
 

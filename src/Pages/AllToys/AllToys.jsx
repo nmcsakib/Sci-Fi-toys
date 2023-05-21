@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ToyDataRow from './ToyDataRow';
 import useTitleChange from '../../Hooks/useTitleChange';
-import ToyDetails from '../ToyDetails/ToyDetails';
+import ToyDetails from './ToyDetails/ToyDetails';
 
 const AllToys = () => {
     const allToys= useLoaderData()
@@ -13,7 +13,7 @@ const AllToys = () => {
       setToyId(id)
     }
     const handelSearch = () => {
-     fetch(`http://localhost:5000/searchToy/${searchText}`).then(res => res.json()).then(data => setToys(data) )
+     fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/searchToy/${searchText}`).then(res => res.json()).then(data => setToys(data) )
     }
     useTitleChange('All Toys')
     return (

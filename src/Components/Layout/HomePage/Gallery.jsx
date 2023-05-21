@@ -4,19 +4,19 @@ import { Link } from 'react-router-dom';
 const Gallery = () => {
     return (
         <div className="container mx-auto bg-orange-200">
-            <h2 className=" tracking-wide font-bold text-center bg-gradient-to-r from-yellow-500 to-pink-500 text-transparent bg-clip-text text-5xl py-5">Collect your Favorite!</h2>
+            <h2 className="section-title">Collect your Favorite!</h2>
             <hr className='bg-black' />
-    <div className="grid-cols-3 p-20 space-y-2  lg:space-y-0 lg:grid lg:gap-3 lg:grid-rows-3">
+    <div className="grid-cols-3 md:p-20 p-10 space-y-2  lg:space-y-0 lg:grid lg:gap-3 lg:grid-rows-3">
         <div className="w-full rounded" data-aos="fade-right"  data-aos-duration="500" >
             <img className='h-full' src="https://i.ibb.co/jRXKC1x/photo-1501532358732-8b50b34df1c4.jpg"
                 alt="image"/> 
         </div>
-        <div data-aos="fade-down"  data-aos-duration="500" className="w-full col-span-2 row-span-2 rounded">
-            <img className='h-96 xl:h-full w-full' src="https://i.ibb.co/NSySV2h/photo-1530026454774-50cce722a1fb.jpg"
+        <div data-aos="fade-down"  data-aos-duration="500" className="w-full col-span-2 md:row-span-2 rounded">
+            <img className='md:h-96 xl:h-full w-full' src="https://i.ibb.co/NSySV2h/photo-1530026454774-50cce722a1fb.jpg"
                 alt="image"/>
         </div>
         <div className="w-full rounded" data-aos="fade-right"  data-aos-duration="500">
-            <img className='h-full' src="https://i.ibb.co/f4qqyfG/photo-1590595978583-3967cf17d2ea.jpg"
+            <img className='md:h-full' src="https://i.ibb.co/f4qqyfG/photo-1590595978583-3967cf17d2ea.jpg"
                 alt="image"/> 
         </div>
         <div className="w-full rounded" data-aos="fade-right"  data-aos-duration="500">

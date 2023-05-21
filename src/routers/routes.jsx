@@ -4,12 +4,12 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Main from "../Components/Layout/Main";
 import AllToys from "../Pages/AllToys/AllToys";
-import ToyDetails from "../Pages/ToyDetails/ToyDetails";
 import AddToy from "../Pages/AddToy";
 import PrivateRoute from "./PrivateRoute";
 import MyToys from "../Pages/MyToys";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Blog from "../Pages/Blog/Blog";
+import ToyDetails from "../Pages/AllToys/ToyDetails/ToyDetails";
 
 
  const router = createBrowserRouter([
@@ -25,11 +25,12 @@ import Blog from "../Pages/Blog/Blog";
             {
                 path: 'all-toys',
                 element: <AllToys/>,
-                loader: ()=> fetch('http://localhost:5000/allToys')
+                loader: ()=> fetch('https://sci-fi-toy-server-nmcsakib.vercel.app/allToys')
             },
             {
                 path: '/toy/:id',
-                element: <PrivateRoute><ToyDetails/></PrivateRoute>
+                element: <ToyDetails/>,
+                
             },
             {
                 path: '/my-toys',

@@ -1,22 +1,18 @@
 import { Rating } from '@smastrom/react-rating';
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import useScrollTop from '../../Hooks/useScrollTop';
-import useTitleChange from '../../Hooks/useTitleChange';
 import { RotatingLines } from 'react-loader-spinner';
+import useTitleChange from '../../../Hooks/useTitleChange';
 
 const ToyDetails = ({toyId}) => {
   console.log(toyId);
-  const {pathname} = useLocation()
   const [toy, setToy ] = useState([])
   const [load, setLoad] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:5000/toy/${toyId}`).then(res => res.json()).then(data => {
+    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/toy/${toyId}`).then(res => res.json()).then(data => {
       setToy(data)
       setLoad(false)
     })
   },[toyId])
-  useScrollTop(pathname)
   const {
     toyName,
     sellerName,
@@ -48,7 +44,7 @@ const ToyDetails = ({toyId}) => {
     <div>
       <h1 className="text-4xl font-bold">{toyName}</h1>
       <p className="text-sm mt-2">Category: {subCategory}</p>
-      <p className="py-6">{detailDescription?.length > 150 ?(detailDescription)?.slice(0, 150) + "..." : detailDescription}</p>
+      <p className="py-6">{detailDescription?.length > 150 ?(detailDescription)?.slice(0, 150) + "...Read more" : detailDescription}</p>
       <div className="stats shadow">
   
       <div className="stats md:stats-vertical shadow w-full">

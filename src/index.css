@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes slide {
+    from, to{
+        background-position: 0 100%;
+    }
+    50%{
+        background-position: 100% 0;
+    }
+}
+.animate-background {
+    background-size: 500% 100%;
+    animation: slide 3s linear infinite;
+  }
+.section-title{
+    @apply  tracking-wide font-bold text-center bg-gradient-to-r from-yellow-500 to-pink-500 text-transparent bg-clip-text text-4xl md:text-5xl py-5
+}

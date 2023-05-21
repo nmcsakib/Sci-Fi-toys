@@ -2,6 +2,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import ToyCard from './ToyCard';
 import { useEffect, useState } from 'react';
+import ToyDetails from '../../../Pages/AllToys/ToyDetails/ToyDetails';
 
 const ShopByCategory = () => {
 
@@ -11,7 +12,7 @@ const ShopByCategory = () => {
   
     useEffect(() => {
       // Fetch data from API based on active tab
-      fetch(`http://localhost:5000/subCategoryToys/${activeTab}`).then((res) => res.json()).then(data => setData(data))
+      fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/subCategoryToys/${activeTab}`).then((res) => res.json()).then(data => setData(data))
     }, [activeTab]);
     const handleTabClick = (tab) => {
         setActiveTab(tab);
@@ -19,7 +20,7 @@ const ShopByCategory = () => {
       
     return (
         <>
-         <h2 className=" tracking-wide font-bold text-center bg-gradient-to-r from-yellow-500 to-pink-500 text-transparent bg-clip-text text-5xl py-5"> Choose your favorite Category's toys!</h2>
+         <h2 className="section-title"> Choose your favorite Category's toys!</h2>
         <div className='min-h-screen bg-red-200 flex  justify-center'>
             
             <hr className='bg-black' />
@@ -32,7 +33,7 @@ const ShopByCategory = () => {
 <div className='p-10'>
     
 <TabPanel>
-    <div   className='grid grid-cols-2 gap-5'>
+    <div   className='grid md:grid-cols-2 gap-5'>
 
     {
         data?.map(toy => <ToyCard key={toy._id} toy={toy}></ToyCard>)
@@ -61,7 +62,9 @@ const ShopByCategory = () => {
     
 </div>
   </Tabs>
+
         </div>
+       
         </>
     );
 };

@@ -4,18 +4,18 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { AuthContext } from '../Provider/AuthProvider';
 import useTitleChange from '../Hooks/useTitleChange';
-const UpdateToy = ({closeModal, updateId, handelUpdateInfo}) => {
+const UpdateToy = ({ updateId, handelUpdateInfo}) => {
+  console.log(updateId);
   const [toy, setToy] = useState([])
-  console.log(toy);
   useTitleChange(`Update toy`)
-  const {price, availableQuantity, detailDescription} = toy;
-    console.log(updateId);
-    useEffect(() => {
-      fetch(`http://localhost:5000/toy/${updateId}?some=somedata`).then(res => res.json()).then(data => {
-        setToy(data)
-      })
-    },[])
-  const {user} = useContext(AuthContext)
+  console.log(updateId);
+  useEffect(() => {
+    fetch(`https://sci-fi-toy-server-nmcsakib.vercel.app/toy/${updateId}?some=somedata`).then(res => res.json()).then(data => {
+      setToy(data)
+    })
+    },[updateId])
+    console.log(toy);
+    const {price, availableQuantity, detailDescription} = toy;
   const { register, handleSubmit, setValue } = useForm();
   const onSubmit = (data) => {
     data.price = parseFloat(data.price)
@@ -23,6 +23,7 @@ const UpdateToy = ({closeModal, updateId, handelUpdateInfo}) => {
     setValue('availableQuantity', '')
     setValue('detailDescription', '')
     handelUpdateInfo(data)
+    console.log(data);
   }
     return (
         <div className='bg-pink-200 z-50'>
@@ -35,7 +36,7 @@ const UpdateToy = ({closeModal, updateId, handelUpdateInfo}) => {
           for="price"
           className="mb-3 block text-base font-medium text-[#07074D]"
         >
-         Price
+         Price(USD)
         </label>
         <input defaultValue={price} {...register("price", {required: true, maxLength: 3})}
           type="number"
@@ -84,13 +85,14 @@ const UpdateToy = ({closeModal, updateId, handelUpdateInfo}) => {
         <button type="submit" 
           className="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
         >
-          Submit
+         Submit
+          
         </button>
-        <button onClick={closeModal}
-          className="hover:shadow-form rounded-md mx-2 bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
-        >
-          Close
+        <button>
+          <label htmlFor="my-modal-update" className="hover:shadow-form rounded-md ml-3 bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">Close</label>
+          
         </button>
+       
       </div>
       </form>
         </div>

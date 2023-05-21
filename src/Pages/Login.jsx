@@ -4,11 +4,14 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import useTitleChange from "../Hooks/useTitleChange";
+import useScrollTop from "../Hooks/useScrollTop";
 
 const Login = () => {
+
     useTitleChange('Login')
     const navigate = useNavigate()
     const location = useLocation()
+    useScrollTop(location.pathname)
     const from = location?.state?.from.pathname;
     const {logIn, googleSignIn, githubSignIn} = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
@@ -66,10 +69,13 @@ const Login = () => {
                                     </i></div>
                                 <input  {...register("password", { required: true , minLength: 6  })} type="password" className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="password"/>
                             </div>
+                            <div>
+                            <p className="font-bold pt-5">Don't have any account? <Link to="/register" className="text-blue-400 hover:underline">Register</Link></p>
+                            </div>
                         </div>
                     </div>
                     <div className="flex flex-col -mx-3">
-                        <p className="font-bold py-3">Don't have any account? <Link to="/register">Register</Link></p>
+                        
                         <div className="w-full px-3 mb-5">
                             <button type="submit" className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">LOGIN NOW</button>
                         </div>
